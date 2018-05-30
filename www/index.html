@@ -3,7 +3,7 @@
 <audio id="myAudio"><source src="spell.mp3" type="audio/mpeg"></audio>
 <audio id="aplause"><source src="applause.mp3" type="audio/mpeg"></audio>
 <audio id="creaky"><source src="creaky.mp3" type="audio/mpeg"></audio>
-<canvas id="ctx" width="350" height="600" style="border: 1px solid;"></canvas>
+<canvas id="ctx" width="340" height="600" style="border: 1px solid;"></canvas>
 <img hidden="true" id="myImg" src="mosca.png" width="80" height="80">
 <img hidden="true" id="bar" src="barra.png" width="80" height="80">
 <img hidden="true" id="reco" src="recorde.png" width="250" height="250">
@@ -34,7 +34,7 @@
 	var record = 0;
 	var inicio = false;
 	var score = 0;
-	var contacliquefinal = 2;
+	var contacliquefinal = 3;
 		
 	//var image = new image();
 	//image.src = "mosca.png"
@@ -97,7 +97,7 @@
 		       mosca[i].tempo += 1;
 			   if (mosca[i].tempo > totaltempo){
 			      ctx.fillStyle = "white";
-		          ctx.fillRect(0 , 0, 350, 600);
+		          ctx.fillRect(0 , 0, 340, 600);
 				  fim = true;
 				  inicio = false;
 				  if (record < mosca[i].id - 1){
@@ -193,9 +193,9 @@
 	    if (!fim && inicio){
 		   mosca.mata(event);
 		}
-		else if (fim && !inicio && contacliquefinal == 2){
+		else if (fim && !inicio && contacliquefinal == 3){
 		   ctx.fillStyle = "white";
-		   ctx.fillRect(0 , 0, 350, 600);
+		   ctx.fillRect(0 , 0, 340, 600);
 		   numero = 0;
 		   mosca.moscas = [];
 		   score = 0;
@@ -208,10 +208,13 @@
 		}
 		else if (fim && !inicio && contacliquefinal < 2){
 		   ctx.fillStyle = "white";
-		   ctx.fillRect(0 , 0, 350, 600);
+		   ctx.fillRect(0 , 0, 340, 600);
 		   ctx.fillStyle = "black";
 	       ctx.font = "30px Arial";
            ctx.fillText("Clique para iniciar",38 , 250);
+		   contacliquefinal +=1;
+		}
+		else if (fim && !inicio && contacliquefinal < 3){
 		   contacliquefinal +=1;
 		}
 	}
