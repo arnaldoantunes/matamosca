@@ -1,7 +1,9 @@
+<html><head>
+</head><body>
 <audio id="myAudio"><source src="spell.mp3" type="audio/mpeg"></audio>
 <audio id="aplause"><source src="applause.mp3" type="audio/mpeg"></audio>
 <audio id="creaky"><source src="creaky.mp3" type="audio/mpeg"></audio>
-<canvas id="ctx" width="300" height="600" style="border:1px solid #000;"></canvas>
+<canvas id="ctx" width="330" height="600" style="border: 1px solid;"></canvas>
 <img hidden="true" id="myImg" src="mosca.png" width="80" height="80">
 <img hidden="true" id="bar" src="barra.png" width="80" height="80">
 <img hidden="true" id="reco" src="recorde.png" width="250" height="250">
@@ -26,10 +28,11 @@
 	var total = document.getElementById("final");
     var barra = document.getElementById("bar");
 	var n8 = document.getElementById("n8");
-	var fim = false;
+	var fim = true;
 	var numero = 0;
 	var totaltempo = 3;
 	var record = 0;
+	var inicio = false;
 		
 	//var image = new image();
 	//image.src = "mosca.png"
@@ -38,8 +41,8 @@
 	    moscas: [],
 	    cria: function(){
 		    this.moscas.push({
-			    x: Math.floor(Math.random() * 250),
-				y: Math.floor(Math.random() * 550),
+			    x: Math.floor(Math.random() * 280),
+				y: Math.floor(Math.random() * 530),
 				largura: 80,
 				altura: 80,
 				tempo: 0,
@@ -80,8 +83,9 @@
 		       mosca[i].tempo += 1;
 			   if (mosca[i].tempo > totaltempo){
 			      ctx.fillStyle = "white";
-		          ctx.fillRect(0 , 0, 300, 600);
+		          ctx.fillRect(0 , 0, 330, 600);
 				  fim = true;
+				  inicio = false;
 				  if (record < mosca[i].id - 1){
 				     record = mosca[i].id - 1;
 				     localStorage.setItem("recorde", record);
@@ -95,7 +99,7 @@
 	};
 	
 	function mostra(){
-	    if (!fim) {
+	    if (!fim && inicio) {
 		  mosca.cria();
 		  mosca.desenha();
 		  mosca.veTempo();
@@ -172,20 +176,20 @@
 	}
 
 	function clique(event){
-	    if (!fim){
+	    if (!fim && inicio){
 		   mosca.mata(event);
 		}
-		
-		//if (fim && !inicio){
-		//   numero = 0;
-		//   inicio = true;
-		//   fim = false;
-		//   clearInterval(interval);
-		//   interval = setInterval(mostra, 1000);
-		//}
-		
-		
-		
+		else if (fim && !inicio){
+		   ctx.fillStyle = "white";
+		   ctx.fillRect(0 , 0, 330, 600);
+		   numero = 0;
+		   mosca.moscas = [];
+		   inicio = true;
+		   fim = false;
+		   clearInterval(interval);
+		   interval = setInterval(mostra, 1000);
+		   inicio = true;
+		}
 	}
 	
 	record = localStorage.getItem("recorde");
@@ -196,4 +200,9 @@
     var canvas = document.getElementById("ctx");
 	canvas.addEventListener("mousedown", clique);	
 	
+	 ctx.fillStyle = "black";
+	 ctx.font = "30px Arial";
+     ctx.fillText("Clique para iniciar",38 , 250);
+	
 </script>
+</body></html>
