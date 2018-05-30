@@ -1,11 +1,11 @@
 <audio id="myAudio"><source src="spell.mp3" type="audio/mpeg"></audio>
 <audio id="aplause"><source src="applause.mp3" type="audio/mpeg"></audio>
 <audio id="creaky"><source src="creaky.mp3" type="audio/mpeg"></audio>
-<canvas id="ctx" width="600" height="600" style="border:1px solid #000;"></canvas>
+<canvas id="ctx" width="300" height="600" style="border:1px solid #000;"></canvas>
 <img hidden="true" id="myImg" src="mosca.png" width="80" height="80">
 <img hidden="true" id="bar" src="barra.png" width="80" height="80">
-<img hidden="true" id="reco" src="recorde.png" width="500" height="500">
-<img hidden="true" id="final" src="final.png" width="500" height="500">
+<img hidden="true" id="reco" src="recorde.png" width="250" height="250">
+<img hidden="true" id="final" src="final.png" width="250" height="250">
 <img hidden="true" id="n0" src="zero.png" width="37" height="48">
 <img hidden="true" id="n1" src="um.png" width="37" height="48">
 <img hidden="true" id="n2" src="dois.png" width="37" height="48">
@@ -30,7 +30,7 @@
 	var numero = 0;
 	var totaltempo = 3;
 	var record = 0;
-	
+		
 	//var image = new image();
 	//image.src = "mosca.png"
 	
@@ -38,8 +38,8 @@
 	    moscas: [],
 	    cria: function(){
 		    this.moscas.push({
-			    x: Math.floor(Math.random() * 500),
-				y: Math.floor(Math.random() * 500),
+			    x: Math.floor(Math.random() * 250),
+				y: Math.floor(Math.random() * 550),
 				largura: 80,
 				altura: 80,
 				tempo: 0,
@@ -80,7 +80,7 @@
 		       mosca[i].tempo += 1;
 			   if (mosca[i].tempo > totaltempo){
 			      ctx.fillStyle = "white";
-		          ctx.fillRect(0 , 0, 600, 600);
+		          ctx.fillRect(0 , 0, 300, 600);
 				  fim = true;
 				  if (record < mosca[i].id - 1){
 				     record = mosca[i].id - 1;
@@ -127,54 +127,65 @@
 	}
 	
 	function avisoFinal(mosca){
-	    ctx.drawImage(total, 40, 40, 500, 500);
-	    var col = 402;
-	    var lin = 455;
+	    ctx.drawImage(total, 20, 100, 250, 250);
+	    var col = 200;
+	    var lin = 308;
 		var n = String(record);
 	    for (var z, z = 0; z < n.length; z++){
-	       if (z == 1){col = 420; lin = 453;}
-	       if (z == 2){col = 437; lin = 450;}
+	       if (z == 1){col = 210; lin = 305;}
+	       if (z == 2){col = 220; lin = 302;}
 		   desenhanumero(n.substring(z,(z + 1)),col, lin); 
 	    }
-		var col = 122;
-	    var lin = 305;
+		var col = 57;
+	    var lin = 230;
 		var n = String(mosca - 1);
 	    for (var z, z = 0; z < n.length; z++){
-	       if (z == 1){col = 140; lin = 295;}
-	       if (z == 2){col = 157; lin = 290;}
+	       if (z == 1){col = 67; lin = 227;}
+	       if (z == 2){col = 77; lin = 224;}
 		   desenhanumero(n.substring(z,(z + 1)),col, lin); 
 	    }
 	}
 	
 	function novorecord(){
-	    ctx.drawImage(recorde, 40, 40, 500, 500);
-	    var col = 392;
-	    var lin = 210;
+	    ctx.drawImage(recorde, 20, 100, 250, 250);
+	    var col = 192;
+	    var lin = 185;
 		var n = String(record);
 	    for (var z, z = 0; z < n.length; z++){
-	       if (z == 1){col = 410; lin = 205;}
-	       if (z == 2){col = 437; lin = 200;}
+	       if (z == 1){col = 202; lin = 183;}
+	       if (z == 2){col = 212; lin = 181;}
 		   desenhanumero(n.substring(z,(z + 1)),col, lin); 
 	    }
 	}
 		
 	function desenhanumero(n, coluna, linha){
-	    if (n=="0"){ctx.drawImage(n0, coluna, linha, 37, 48);}
-	    if (n=="1"){ctx.drawImage(n1, coluna, linha, 37, 48);}
-		if (n=="2"){ctx.drawImage(n2, coluna, linha, 37, 48);}
-		if (n=="3"){ctx.drawImage(n3, coluna, linha, 37, 48);}
-		if (n=="4"){ctx.drawImage(n4, coluna, linha, 37, 48);}
-		if (n=="5"){ctx.drawImage(n5, coluna, linha, 37, 48);}
-		if (n=="6"){ctx.drawImage(n6, coluna, linha, 37, 48);}
-		if (n=="7"){ctx.drawImage(n7, coluna, linha, 37, 48);}		
-	    if (n=="8"){ctx.drawImage(n8, coluna, linha, 37, 48);}
-		if (n=="9"){ctx.drawImage(n9, coluna, linha, 37, 48);}
+	    if (n=="0"){ctx.drawImage(n0, coluna, linha, 17, 28);}
+	    if (n=="1"){ctx.drawImage(n1, coluna, linha, 17, 28);}
+		if (n=="2"){ctx.drawImage(n2, coluna, linha, 17, 28);}
+		if (n=="3"){ctx.drawImage(n3, coluna, linha, 17, 28);}
+		if (n=="4"){ctx.drawImage(n4, coluna, linha, 17, 28);}
+		if (n=="5"){ctx.drawImage(n5, coluna, linha, 17, 28);}
+		if (n=="6"){ctx.drawImage(n6, coluna, linha, 17, 28);}
+		if (n=="7"){ctx.drawImage(n7, coluna, linha, 17, 28);}		
+	    if (n=="8"){ctx.drawImage(n8, coluna, linha, 17, 28);}
+		if (n=="9"){ctx.drawImage(n9, coluna, linha, 17, 28);}
 	}
 
 	function clique(event){
 	    if (!fim){
 		   mosca.mata(event);
 		}
+		
+		//if (fim && !inicio){
+		//   numero = 0;
+		//   inicio = true;
+		//   fim = false;
+		//   clearInterval(interval);
+		//   interval = setInterval(mostra, 1000);
+		//}
+		
+		
+		
 	}
 	
 	record = localStorage.getItem("recorde");
