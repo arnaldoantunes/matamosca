@@ -143,7 +143,7 @@
 		      interval = setInterval(mostra, 50);
 		  }
 		}
-		if (fim && !inicio){ctx.drawImage(inicioimage, 120, 450, 80, 20);}
+		if (fim && !inicio){ctx.drawImage(inicioimage, 125, 450, 80, 20);}
 	}
 	
 	function avisoFinal(mosca){
@@ -196,7 +196,7 @@
 		   mosca.mata(event);
 		}
 		else if (fim && !inicio){
-		   if (event.x >= 110 && event.x <= 190 && event.y >= 450 && event.y <= 470){
+		   if (event.x >= 125 && event.x <= 205 && event.y >= 450 && event.y <= 470){
 			   ctx.fillStyle = "white";
 			   ctx.fillRect(0 , 0, 340, 600);
 			   numero = 0;
